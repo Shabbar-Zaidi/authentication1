@@ -4,7 +4,8 @@ import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
 
 function Signup() {
-  const [signupInfo, setSignupInfo] = useState({  // 
+  const [signupInfo, setSignupInfo] = useState({
+    //
     name: "",
     email: "",
     password: "",
@@ -18,26 +19,28 @@ function Signup() {
     copySignupInfo[name] = value;
     setSignupInfo(copySignupInfo);
   };
-  console.log("Signup info: ", signupInfo)
+  console.log("Signup info: ", signupInfo);
 
   const handleSignup = async (e) => {
-    e.preventDefault();   // for preventing refresh page
+    e.preventDefault(); // for preventing refresh page
     const { name, email, password } = signupInfo;
-    if (!name || !email || !password) { // Client Side Validation
+    if (!name || !email || !password) {
+      // Client Side Validation
       return handleError("name, email and password are required");
     }
     try {
       // const url = `https://deploy-mern-app-1-api.vercel.app/auth/signup`;
-      const url = 'http://localhost:8080/auth/signup'
+      const url =
+        "https://vercel.com/shabbar-zaidis-projects/authentication1/auth/signup";
       const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(signupInfo), // 
+        body: JSON.stringify(signupInfo), //
       });
       const result = await response.json();
-      console.log(result)
+      console.log(result);
       const { success, message, error } = result;
       if (success) {
         handleSuccess(message);

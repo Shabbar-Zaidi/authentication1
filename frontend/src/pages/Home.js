@@ -23,7 +23,8 @@ function Home() {
 
   const fetchProducts = async () => {
     try {
-      const url = "http://localhost:8080/products";
+      const url =
+        "https://vercel.com/shabbar-zaidis-projects/authentication1/products";
       const headers = {
         // Fetch API requires headers to be passed as an object
         headers: {

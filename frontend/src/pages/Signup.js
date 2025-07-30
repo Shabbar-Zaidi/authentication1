@@ -5,7 +5,8 @@ import { handleError, handleSuccess } from "../utils";
 
 function Signup() {
   const [signupInfo, setSignupInfo] = useState({
-    //
+    // useState is used to manage state in functional components
+    // signupInfo is an object that holds the user's name, email, and password
     name: "",
     email: "",
     password: "",
@@ -13,11 +14,12 @@ function Signup() {
 
   const navigate = useNavigate();
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; // destructuring to get name and value from the event target
     console.log(name, value);
-    const copySignupInfo = { ...signupInfo };
-    copySignupInfo[name] = value;
-    setSignupInfo(copySignupInfo);
+    const copySignupInfo = { ...signupInfo }; // create a copy of signupInfo
+    // to avoid direct mutation of state
+    copySignupInfo[name] = value; // update the specific field in the copy
+    setSignupInfo(copySignupInfo); // set the state with the updated copy
   };
   console.log("Signup info: ", signupInfo);
 

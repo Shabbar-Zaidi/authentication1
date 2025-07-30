@@ -40,6 +40,7 @@ function Home() {
     }
   };
   useEffect(() => {
+    // useEffect is used to run side effects in functional components
     fetchProducts();
   }, []);
 

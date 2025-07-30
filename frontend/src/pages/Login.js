@@ -28,18 +28,20 @@ function Login() {
     try {
       const url = `https://vercel.com/shabbar-zaidis-projects/authentication1/auth/login`;
       const response = await fetch(url, {
+        // Fetch API is used to make HTTP requests
         method: "POST",
         headers: {
+          // Fetch API requires headers to be passed as an object
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(loginInfo),
+        body: JSON.stringify(loginInfo), // Convert loginInfo object to JSON string
       });
       const result = await response.json();
       const { success, message, jwtToken, name, error } = result;
       if (success) {
         handleSuccess(message);
-        localStorage.setItem("token", jwtToken); //
-        localStorage.setItem("loggedInUser", name); //
+        localStorage.setItem("token", jwtToken); // store JWT token in localStorage
+        localStorage.setItem("loggedInUser", name); //  store logged-in user's name
         setTimeout(() => {
           navigate("/home");
         }, 1000);
